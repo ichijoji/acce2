@@ -20,6 +20,13 @@ window:
                 material:
                     color: 0,1,0,0.5
                     texture: test.jpg
+            children:
+                text:
+                    type: graphics.prims2d.text
+                    vars:
+                        text: hello
+                        material:
+                            color: 0,0,0
 
         camera:
             type: test.keyCamera

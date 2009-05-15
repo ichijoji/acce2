@@ -23,9 +23,7 @@ class SceneNode(Object):
         
         glPushMatrix()
         
-        self.position.translate()
-        glRotatef(math.degrees(self.rotation),0,0,1)
-        self.scale.scale()
+        self.transform()
         
         if self.static and not SceneNode.genNode:
             if self.list:
@@ -37,6 +35,16 @@ class SceneNode(Object):
                 SceneNode.genNode = self
             
         materialManager.bind(self.material)
+        
+        self.geom()
+        
+    def transform(self):
+        self.position.translate()
+        glRotatef(math.degrees(self.rotation),0,0,1)
+        self.scale.scale()
+        
+    def geom(self):
+        pass
         
     def unmsg_render2d(self, args):
         if not self.static or SceneNode.genNode:

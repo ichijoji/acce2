@@ -7,10 +7,11 @@ class Rect(SceneNode):
         SceneNode.onAttach(self)
         
         self.defaultVar("filled",True)
+        self.defaultVar("center",True)
     
-    def msg_render2d(self, args):
-        SceneNode.msg_render2d(self, args)
-
+    def geom(self):
+        if self.center:
+            glTranslatef(-0.5,-0.5,0)
         if self.filled:
             glBegin(GL_QUADS)
         else:
@@ -24,3 +25,5 @@ class Rect(SceneNode):
         glTexCoord2f(1,0)
         glVertex2f(1,0)
         glEnd()
+        if self.center:
+            glTranslatef(0.5,0.5,0)

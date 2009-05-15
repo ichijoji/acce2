@@ -8,9 +8,11 @@ class Circle(SceneNode):
         SceneNode.onAttach(self)
         self.defaultVar("filled",True)
         self.defaultVar("slices",20)
+        self.defaultVar("center",True)
     
-    def msg_render2d(self, args):
-        SceneNode.msg_render2d(self,args)
+    def geom(self):
+        if not self.center:
+            glTranslatef(0.5,0.5,0)
         
         if self.filled:
             glBegin(GL_TRIANGLE_FAN)
@@ -26,3 +28,6 @@ class Circle(SceneNode):
             glTexCoord2f((x+1)/2,(y+1)/2)
             glVertex2f(x,y)
         glEnd()
+
+        if not self.center:
+            glTranslatef(-0.5,-0.5,0)
