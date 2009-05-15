@@ -1,0 +1,53 @@
+window:
+    type: graphics.window
+    
+    children:
+        myRect:
+            type: graphics.prims2d.rect
+            vars:
+                position: Vec2(100,100)
+                scale: Vec2(50,50)
+                rotation: 1
+                material:
+                    color: 1,0,0,0.5
+                    texture: test.jpg
+                    
+        myCircle:
+            type: graphics.prims2d.circle
+            vars:
+                position: Vec2(400,100)
+                scale: Vec2(100,50)
+                material:
+                    color: 0,1,0,0.5
+                    texture: test.jpg
+
+        camera:
+            type: test.keyCamera
+
+            children:
+                cube:
+                    type: graphics.prims3d.cube
+                    vars:
+                        material:
+                            texture: test.jpg
+                            color: 0.5,0.5,1
+                        scale: Vec3(10,10,10)
+
+                sphere:
+                    type: graphics.prims3d.sphere
+                    vars:
+                        material:
+                            texture: test.jpg
+                            color: 1,0,0
+                        position: Vec3(0,10,0)
+                        scale: Vec3(5,5,5)
+
+                cylinder:
+                    type: graphics.prims3d.cylinder
+                    vars:
+                        material:
+                            texture: test.jpg
+                            scale: Vec2(10,1)
+                            color: 0,1,0
+                        position: Vec3(20,0,20)
+                        scale: Vec3(5,10,10)
